@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+
+import { Box, Container, Flex, Grid, GridItem } from '@chakra-ui/react';
+import Allroutes from './AllRoutes/Allroutes';
 import './App.css';
+import NavBar from './components/NavBar';
+import SideBar from './components/SideBar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Grid
+    bg={"#232a47"}
+    height="100vh"
+    
+  templateAreas={`"nav header "
+                  "nav main "
+                  "footer footer "`}
+  gridTemplateRows={'60px 1fr auto'}
+  gridTemplateColumns={'180px 1fr'}
+  
+  
+  color='blackAlpha.700'
+  fontWeight='bold'
+>
+  <GridItem  width="100%"  bg='#232a47' area={'header'}>
+    <NavBar/>
+  </GridItem>
+  <GridItem   height={"100%"}   bg='#232a47' area={'nav'}>
+    <SideBar/>
+  </GridItem>
+  <GridItem height={"90vh"} overflowY="scroll"  borderRadius={"20px 0 0 20px"}  bg='white' area={'main'}>
+    <Allroutes/>
+  </GridItem>
+  <GridItem  bg='#232a47' area={'footer'}>
+  </GridItem>
+</Grid>
+    
+     );
 }
 
 export default App;
